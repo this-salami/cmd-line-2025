@@ -1,0 +1,91 @@
+body {
+    /*font-family: Arial, Helvetica, sans-serif;*/
+    font-family: monospace, monospace;
+    background: rgb(22, 22, 22);
+    color: white;
+    text-align: left;
+    font-size: 16px;
+    font-weight: 100;
+}
+
+p {
+    white-space: nowrap;
+    overflow-x: visible;
+}
+
+body ::selection {
+    background-color: white;
+    color: rgb(22, 22, 22);
+}
+body ::-moz-selection {
+    background-color: white;
+    color: rgb(22, 22, 22);
+}
+
+span {
+    color: var(--color, white);
+}
+span ::selection {
+    background-color: var(--color, white);
+    color: rgb(22, 22, 22);
+}
+span ::-moz-selection {
+    background-color: var(--color, white);
+    color: rgb(22, 22, 22);
+}
+
+/*
+#input {
+    font-family: inherit;
+    color: inherit;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    border-radius: 0;
+}
+
+#input:focus {
+    outline: none;
+}
+*/
+
+@keyframes cursor{
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+#input {
+    --cursor-offset: -1;
+}
+
+#input::after {
+    content: "";
+    width: calc(1ch + 0px);
+    height: 4px;
+    /*background-color: white;*/
+    backdrop-filter: invert(100%);
+    
+    position: absolute;
+    transform: translate(calc(var(--cursor-offset, 0) * 1ch), calc(1em - 2px));
+    
+    animation-name: cursor;
+    animation-duration: 1000ms;
+    animation-timing-function: step-start;
+    animation-iteration-count: infinite;
+}
+
+#cursor {
+    width: 20px;
+    height: 5px;
+    background-color: white;
+    position: relative;
+    top: 0px;
+    left: 0px;
+}
